@@ -1,0 +1,1 @@
+export const JWT_SECRET_USER = "USER_SECRET_123";

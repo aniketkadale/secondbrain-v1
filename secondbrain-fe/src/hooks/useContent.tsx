@@ -21,7 +21,7 @@ export const useContent = () => {
     refresh();
     const interval = setInterval(() => {
       refresh();
-    }, 10 * 1000);
+    }, 1 * 1000);
 
     return () => {
       clearInterval(interval);

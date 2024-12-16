@@ -247,28 +247,48 @@ app.get("/api/v1/me", userAuthMiddleware_1.UserAuthMiddleware, (req, res) => __a
         res.status(500).json({ message: "Internal server error..." });
     }
 }));
-// app.get("/api/v1/getAllBrains", UserAuthMiddleware, async (req, res) => {
-//   try {
-//     const id = req.userId;
-//     const userBrains = await Content.find({
-//       userId: id,
-//     });
-//     res
-//       .status(200)
-//       .json({
-//         message: "All brains fetched for current user...",
-//         allBrains: userBrains,
-//       });
-//   } catch (error) {
-//     res.status(500).json({ message: "" });
-//   }
-// });
-// app.delete("api/v1/delete", async (req, res) => {
-//   try {
-//   } catch(error) {
-//     res.status(500).json({message: "Internal error while deleting a brain..."});
-//   }
-// })
+// Fetch tweets
+app.get("/api/v1/content/tweets", userAuthMiddleware_1.UserAuthMiddleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const userId = req.userId;
+        if (!userId) {
+            return res
+                .status(404)
+                .json({ message: "Please log in to see content" });
+        }
+        const tweets = yield Content_1.Content.find({
+            userId,
+            type: "twitter",
+        });
+        return res.status(200).json({ message: "All tweets fetched...", tweets });
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Internal server error..." });
+    }
+}));
+// Fetch youtube
+app.get("/api/v1/content/youtube", userAuthMiddleware_1.UserAuthMiddleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const userId = req.userId;
+        if (!userId) {
+            return res
+                .status(404)
+                .json({ message: "Please log in to see content" });
+        }
+        const youtube = yield Content_1.Content.find({
+            userId,
+            type: "youtube",
+        });
+        return res
+            .status(200)
+            .json({ message: "All youtube fetched...", youtube });
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Internal server error..." });
+    }
+}));
 app.listen(3000, () => {
     console.log("Server started...");
 });

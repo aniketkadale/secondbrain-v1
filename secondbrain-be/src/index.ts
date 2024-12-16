@@ -273,31 +273,60 @@ app.get("/api/v1/me", UserAuthMiddleware, async (req, res) => {
   }
 });
 
-// app.get("/api/v1/getAllBrains", UserAuthMiddleware, async (req, res) => {
-//   try {
-//     const id = req.userId;
-//     const userBrains = await Content.find({
-//       userId: id,
-//     });
+// Fetch tweets
+app.get(
+  "/api/v1/content/tweets",
+  UserAuthMiddleware,
+  async (req: Request, res: Response): Promise<any> => {
+    try {
+      const userId = req.userId;
+      if (!userId) {
+        return res
+          .status(404)
+          .json({ message: "Please log in to see content" });
+      }
 
-//     res
-//       .status(200)
-//       .json({
-//         message: "All brains fetched for current user...",
-//         allBrains: userBrains,
-//       });
-//   } catch (error) {
-//     res.status(500).json({ message: "" });
-//   }
-// });
+      const tweets = await Content.find({
+        userId,
+        type: "twitter",
+      });
 
-// app.delete("api/v1/delete", async (req, res) => {
-//   try {
+      return res.status(200).json({ message: "All tweets fetched...", tweets });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "Internal server error..." });
+    }
+  }
+);
 
-//   } catch(error) {
-//     res.status(500).json({message: "Internal error while deleting a brain..."});
-//   }
-// })
+
+// Fetch youtube
+app.get(
+  "/api/v1/content/youtube",
+  UserAuthMiddleware,
+  async (req: Request, res: Response): Promise<any> => {
+    try {
+      const userId = req.userId;
+      if (!userId) {
+        return res
+          .status(404)
+          .json({ message: "Please log in to see content" });
+      }
+
+      const youtube = await Content.find({
+        userId,
+        type: "youtube",
+      });
+
+      return res
+        .status(200)
+        .json({ message: "All youtube fetched...", youtube });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "Internal server error..." });
+    }
+  }
+);
 
 app.listen(3000, () => {
   console.log("Server started...");

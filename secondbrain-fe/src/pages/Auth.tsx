@@ -27,8 +27,18 @@ export const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen w-screen bg-gray-200">
-      <div className="bg-white rounded-md min-w-48 flex items-center justify-center flex-col p-8">
+    <div className="flex justify-center items-center h-screen w-screen bg-gray-200 border-2 rounded-md">
+      <div>
+        <img
+          className="h-96 rounded-tl-md rounded-bl-md"
+          src="/sign_up_png.png"
+          alt="sign up"
+        />
+      </div>
+      <div className="bg-white h-96 rounded-md flex items-center justify-center flex-col p-8">
+        <div className="flex justify-start mb-2">
+          <h1 className="text-xl font-semibold">Welcome Back!</h1>
+        </div>
         <Input reference={usernameRef} type="text" placeholder="Username" />
         <Input reference={passwordRef} type="password" placeholder="Password" />
         <div className="w-full mt-4">
@@ -39,6 +49,20 @@ export const Signup = () => {
             fullWidth={true}
             onClick={handleSignup}
           />
+        </div>
+
+        <div>
+          <span className="text-xs">
+            Already have an account?{" "}
+            <span
+              className="cursor-pointer hover:text-[#929DAD] underline"
+              onClick={() => {
+                navigate("/signin");
+              }}
+            >
+              Sign in
+            </span>
+          </span>
         </div>
       </div>
     </div>
@@ -70,7 +94,10 @@ export const Signin = () => {
   };
   return (
     <div className="flex justify-center items-center h-screen w-screen bg-gray-200">
-      <div className="bg-white rounded-md min-w-48 flex items-center justify-center flex-col p-8">
+      <div className="bg-white h-96 rounded-md flex items-center justify-center flex-col p-8">
+        <div className="flex justify-start mb-2">
+          <h1 className="text-xl font-semibold">Welcome Back!</h1>
+        </div>
         <Input reference={usernameRef} type="text" placeholder="Username" />
         <Input reference={passwordRef} type="password" placeholder="Password" />
         <div className="w-full mt-4">
@@ -82,6 +109,27 @@ export const Signin = () => {
             onClick={handleSignin}
           />
         </div>
+        <div>
+          <span className="text-xs">
+           Don't have an account?{" "}
+            <span
+              className="cursor-pointer hover:text-[#929DAD] underline"
+              onClick={() => {
+                navigate("/signup");
+              }}
+            >
+              Sign up
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <img
+          className="h-96 rounded-tl-md rounded-bl-md"
+          src="/sign_up_png.png"
+          alt="sign up"
+        />
       </div>
     </div>
   );

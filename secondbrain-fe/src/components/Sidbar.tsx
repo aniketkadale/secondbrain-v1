@@ -11,13 +11,13 @@ export const Sidebar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="h-screen w-72 bg-white left-0 top-0 border-r shadow-md absolute">
+    <div className="h-screen w-72 bg-white left-0 top-0 border-r shadow-sm absolute">
       <div
         className="flex just m-4 gap-2 items-center cursor-pointer"
         onClick={() => navigate("/dashboard")}
       >
         <div className="text-purple-600">
-          <BrainIcon />
+          <img className="h-12 text-purple-600" src="/brain.png" alt="logo" />
         </div>
         <h1 className="font-bold text-2xl text-gray-800">Second Brain</h1>
       </div>

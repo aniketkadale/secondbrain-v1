@@ -3,12 +3,14 @@ import { Signin, Signup } from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Tweets from "./pages/Tweets";
 import Youtube from "./pages/Youtube";
+import LandingPage from "./pages/LandingPage";
 // import MyBrains from "./pages/MyBrains";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/dashboard" element={<Dashboard />} />

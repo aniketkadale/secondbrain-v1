@@ -35,7 +35,8 @@ export const Signup = () => {
           alt="sign up"
         />
       </div>
-      <div className="bg-white h-96 rounded-md flex items-center justify-center flex-col p-8">
+      <div className="bg-white h-96 rounded-tr-md rounded-br-md
+       flex items-center justify-center flex-col p-8">
         <div className="flex justify-start mb-2">
           <h1 className="text-xl font-semibold">Welcome Back!</h1>
         </div>
@@ -94,7 +95,7 @@ export const Signin = () => {
   };
   return (
     <div className="flex justify-center items-center h-screen w-screen bg-gray-200">
-      <div className="bg-white h-96 rounded-md flex items-center justify-center flex-col p-8">
+      <div className="bg-white h-96 rounded-tl-md rounded-bl-md flex items-center justify-center flex-col p-8">
         <div className="flex justify-start mb-2">
           <h1 className="text-xl font-semibold">Welcome Back!</h1>
         </div>
@@ -111,7 +112,7 @@ export const Signin = () => {
         </div>
         <div>
           <span className="text-xs">
-           Don't have an account?{" "}
+            Don't have an account?{" "}
             <span
               className="cursor-pointer hover:text-[#929DAD] underline"
               onClick={() => {
@@ -126,7 +127,7 @@ export const Signin = () => {
 
       <div>
         <img
-          className="h-96 rounded-tl-md rounded-bl-md"
+          className="h-96 rounded-tr-md rounded-br-md"
           src="/sign_up_png.png"
           alt="sign up"
         />

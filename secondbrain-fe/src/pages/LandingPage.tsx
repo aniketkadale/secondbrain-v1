@@ -33,7 +33,7 @@ const LandingPage = () => {
               />
             </h2>
           </div>
-          <div className="text-center">
+          <div className="text-center mr-16">
             <h2 className="font-poppins text-[#827BEC] text-2xl font-bold">
               A single space for everything you value online.
             </h2>

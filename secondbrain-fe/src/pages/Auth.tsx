@@ -27,16 +27,18 @@ export const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen w-screen bg-gray-200 border-2 rounded-md">
-      <div>
+    <div className="flex justify-center items-center h-screen w-screen bg-gradient-to-r from-purple-600">
+      <div className="shadow-2xl">
         <img
           className="h-96 rounded-tl-md rounded-bl-md"
           src="/sign_up_png.png"
           alt="sign up"
         />
       </div>
-      <div className="bg-white h-96 rounded-tr-md rounded-br-md
-       flex items-center justify-center flex-col p-8">
+      <div
+        className="bg-white h-96 rounded-tr-md rounded-br-md
+       flex items-center justify-center flex-col p-8 shadow-2xl"
+      >
         <div className="flex justify-start mb-2">
           <h1 className="text-xl font-semibold">Welcome Back!</h1>
         </div>
@@ -94,9 +96,9 @@ export const Signin = () => {
     }
   };
   return (
-    <div className="flex justify-center items-center h-screen w-screen bg-gray-200">
+    <div className="flex justify-center items-center h-screen w-screen bg-gradient-to-r from-purple-600">
       <div className="bg-white h-96 rounded-tl-md rounded-bl-md flex items-center justify-center flex-col p-8">
-        <div className="flex justify-start mb-2">
+        <div className="flex justify-start mb-2 shadow-2xl">
           <h1 className="text-xl font-semibold">Welcome Back!</h1>
         </div>
         <Input reference={usernameRef} type="text" placeholder="Username" />
@@ -125,7 +127,7 @@ export const Signin = () => {
         </div>
       </div>
 
-      <div>
+      <div className="shadow-2xl">
         <img
           className="h-96 rounded-tr-md rounded-br-md"
           src="/sign_up_png.png"

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BACKEND_URL } from "../config";
 import DeleteIcon from "../icons/DeleteIcon";
 import { ShareIcon } from "../icons/ShareIcon";
@@ -5,9 +6,32 @@ import { CardProps } from "../interfaces/CardProps";
 import { Button } from "./Button";
 import axios from "axios";
 
+declare global {
+  interface Window {
+    twttr?: any;
+  }
+}
+
 export const Card = (props: CardProps) => {
+  useEffect(() => {
+    if (!window.twttr) {
+      const script = document.createElement("script");
+      script.src = "https://platform.twitter.com/widgets.js";
+      script.async = true;
+      script.onload = () => {
+        console.log("Twitter script loaded");
+        if (window.twttr?.widgets) {
+          window.twttr.widgets.load();
+        }
+      };
+      document.body.appendChild(script);
+    } else {
+      window.twttr.widgets.load();
+    }
+  }, [props.type, props.link]);
+
   const handleDeleteBrain = async () => {
-      if (props.onDelete) props.onDelete(props.id);
+    if (props.onDelete) props.onDelete(props.id);
     try {
       const response = await axios.delete(
         `${BACKEND_URL}/api/v1/content/${props.id}`,

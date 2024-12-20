@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { BrainIcon } from "../icons/BrainIcon";
 import { DocIcon } from "../icons/DocIcon";
 import { LinkIcon } from "../icons/LinkIcon";
 import { TagIcon } from "../icons/TagIcon";

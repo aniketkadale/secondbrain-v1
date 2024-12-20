@@ -22,10 +22,10 @@ function Dashboard() {
             Authorization: localStorage.getItem("token"),
           },
         });
-        console.log("User API Response:", res.data);
+        // console.log("User API Response:", res.data);
         setUsername(res.data.user.username || "User");
       } catch (error) {
-        console.log("user fetched failed...");
+        // console.log("user fetched failed...");
         setUsername("Guest");
       }
     }

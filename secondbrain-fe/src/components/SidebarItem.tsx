@@ -7,7 +7,7 @@ export const SidebarItem = (props: SidebarItemProps) => {
       onClick={props.onClick}
     >
       <div className="p-2 cursor-pointer text-gray-600">{props.icon}</div>
-      <div className="p-2 font-semibold cursor-pointer text-gray-600">
+      <div className="p-2 font-medium cursor-pointer text-gray-600">
         {props.text}
       </div>
     </div>

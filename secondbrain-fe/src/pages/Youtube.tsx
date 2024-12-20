@@ -17,16 +17,16 @@ const Youtube = () => {
   useEffect(() => {
     async function getUser() {
       try {
-        const res = await axios.get(`${BACKEND_URL}/api/v1/content/youtube`, {
+        const res = await axios.get(`${BACKEND_URL}/api/v1/me`, {
           headers: {
             Authorization: localStorage.getItem("token"),
           },
         });
-        console.log("User API Response:", res.data);
+     
         setUsername(res.data.user.username || "User");
       } catch (error) {
         console.log("user fetched failed...");
-        setUsername("Guest");
+        
       }
     }
 

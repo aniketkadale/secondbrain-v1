@@ -86,7 +86,7 @@ function Dashboard() {
             Welcome <span className="text-xl text-gray-600">{username}</span>
           </h2>
         </div>
-        <div className="flex gap-16 flex-wrap mx-16 my-5">
+        <div className="flex gap-12 flex-wrap mx-16 my-5">
           {/* {JSON.stringify(contents)} */}
           {contents.map(({ _id, type, link, title }) => (
             <Card id={_id} type={type} link={link} title={title} />

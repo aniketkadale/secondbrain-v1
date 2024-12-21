@@ -67,7 +67,7 @@ export const Card = (props: CardProps) => {
             {/* <div className="text-gray-500">
               <ShareIcon size="md" />
             </div> */}
-            <div className="flex justify-center items-center  gap-4 text-gray-500">
+            <div className="flex justify-center items-center gap-4 text-gray-500">
               <ShareIcon size="md" />
               <Button
                 variant="danger"

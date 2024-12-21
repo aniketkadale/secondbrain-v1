@@ -5,6 +5,7 @@ import { Sidebar } from "../components/Sidbar";
 import axios from "axios";
 import { PlusIcon } from "../icons/PlusIcon";
 import { ShareIcon } from "../icons/ShareIcon";
+import { BACKEND_URL } from "../config";
 import { useContentTweets } from "../hooks/useContentTweets";
 import { Card } from "../components/Card";
 
@@ -17,7 +18,7 @@ const Tweets = () => {
   useEffect(() => {
     async function getUser() {
       try {
-        const res = await axios.get(`${process.env.BACKEND_URL}/api/v1/me`, {
+        const res = await axios.get(`${BACKEND_URL}/api/v1/me`, {
           headers: {
             Authorization: localStorage.getItem("token"),
           },
@@ -39,7 +40,7 @@ const Tweets = () => {
 
   async function handleShareBrain() {
     const res = await axios.post(
-      `${process.env.BACKEND_URL}/api/v1/brain/share`,
+      `${BACKEND_URL}/api/v1/brain/share`,
       {
         share: true,
       },

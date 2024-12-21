@@ -6,6 +6,7 @@ import { PlusIcon } from "../icons/PlusIcon";
 import { ShareIcon } from "../icons/ShareIcon";
 import { Sidebar } from "../components/Sidbar";
 import { useContent } from "../hooks/useContent";
+import { BACKEND_URL } from "../config";
 import axios from "axios";
 
 function Dashboard() {
@@ -16,7 +17,7 @@ function Dashboard() {
   useEffect(() => {
     async function getUser() {
       try {
-        const res = await axios.get(`${process.env.BACKEND_URL}/api/v1/me`, {
+        const res = await axios.get(`${BACKEND_URL}/api/v1/me`, {
           headers: {
             Authorization: localStorage.getItem("token"),
           },
@@ -38,7 +39,7 @@ function Dashboard() {
 
   async function handleShareBrain() {
     const res = await axios.post(
-      `${process.env.BACKEND_URL}/api/v1/brain/share`,
+      `${BACKEND_URL}/api/v1/brain/share`,
       {
         share: true,
       },

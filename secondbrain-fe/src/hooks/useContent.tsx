@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BACKEND_URL } from "../config";
 import axios from "axios";
 
 export const useContent = () => {
@@ -6,7 +7,7 @@ export const useContent = () => {
 
   function refresh() {
     axios
-      .get(`${process.env.BACKEND_URL}/api/v1/content`, {
+      .get(`${BACKEND_URL}/api/v1/content`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },

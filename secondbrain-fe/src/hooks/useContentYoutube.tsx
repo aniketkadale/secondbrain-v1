@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BACKEND_URL } from "../config"
 import axios from "axios";
 
 export const useContentYoutube = () => {
@@ -6,7 +7,7 @@ export const useContentYoutube = () => {
 
   function refresh() {
     axios
-      .get(`${process.env.BACKEND_URL}/api/v1/content/youtube`, {
+      .get(`${BACKEND_URL}/api/v1/content/youtube`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },

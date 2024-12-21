@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { BACKEND_URL } from "../config";
 import DeleteIcon from "../icons/DeleteIcon";
 import { ShareIcon } from "../icons/ShareIcon";
 import { CardProps } from "../interfaces/CardProps";
@@ -33,7 +34,7 @@ export const Card = (props: CardProps) => {
     if (props.onDelete) props.onDelete(props.id);
     try {
       const response = await axios.delete(
-        `${process.env.BACKEND_URL}/api/v1/content/${props.id}`,
+        `${BACKEND_URL}/api/v1/content/${props.id}`,
         {
           headers: {
             Authorization: localStorage.getItem("token"),

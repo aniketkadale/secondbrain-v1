@@ -5,7 +5,7 @@ import { Sidebar } from "../components/Sidbar";
 import axios from "axios";
 import { PlusIcon } from "../icons/PlusIcon";
 import { ShareIcon } from "../icons/ShareIcon";
-
+import { BACKEND_URL } from "../config";
 import { Card } from "../components/Card";
 import { useContentYoutube } from "../hooks/useContentYoutube";
 
@@ -17,15 +17,16 @@ const Youtube = () => {
   useEffect(() => {
     async function getUser() {
       try {
-        const res = await axios.get(`${process.env.BACKEND_URL}/api/v1/me`, {
+        const res = await axios.get(`${BACKEND_URL}/api/v1/me`, {
           headers: {
             Authorization: localStorage.getItem("token"),
           },
         });
-
+     
         setUsername(res.data.user.username || "User");
       } catch (error) {
         console.log("user fetched failed...");
+        
       }
     }
 
@@ -38,7 +39,7 @@ const Youtube = () => {
 
   async function handleShareBrain() {
     const res = await axios.post(
-      `${process.env.BACKEND_URL}/api/v1/brain/share`,
+      `${BACKEND_URL}/api/v1/brain/share`,
       {
         share: true,
       },

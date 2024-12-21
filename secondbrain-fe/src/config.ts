@@ -1,0 +1,1 @@
+export const BACKEND_URL = "https://secondbrain-v1.onrender.com";

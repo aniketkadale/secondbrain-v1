@@ -21,6 +21,7 @@ app.use(
       // "https://your-vercel-domain.vercel.app",
       "http://localhost:5173", // for local development
     ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );

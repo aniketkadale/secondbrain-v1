@@ -1,4 +1,3 @@
-require("dotenv").config();
 import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { CreateContentModal } from "../components/CreateContentModal";

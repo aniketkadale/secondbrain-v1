@@ -1,4 +1,3 @@
-require("dotenv").config();
 import { useEffect } from "react";
 import DeleteIcon from "../icons/DeleteIcon";
 import { ShareIcon } from "../icons/ShareIcon";

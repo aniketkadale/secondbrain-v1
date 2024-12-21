@@ -14,7 +14,16 @@ import { Request, Response } from "express";
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://secondbrain-v1.vercel.app",
+      // "https://your-vercel-domain.vercel.app",
+      "http://localhost:5173", // for local development
+    ],
+    credentials: true,
+  })
+);
 
 const reqZodBody = z.object({
   username: z.string().min(3).max(25),

@@ -1,5 +1,6 @@
+require("dotenv").config();
 import { useEffect, useState } from "react";
-import { BACKEND_URL } from "../config";
+
 import axios from "axios";
 
 export const useContentTweets = () => {
@@ -7,7 +8,7 @@ export const useContentTweets = () => {
 
   function refresh() {
     axios
-      .get(`${BACKEND_URL}/api/v1/content/tweets`, {
+      .get(`${process.env.BACKEND_URL}/api/v1/content/tweets`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },

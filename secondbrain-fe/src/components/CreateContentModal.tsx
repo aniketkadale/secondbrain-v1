@@ -1,9 +1,9 @@
+require('dotenv').config();
 import { useRef, useState } from "react";
 import { CrossIcon } from "../icons/CloseIcon";
 import { CreateContentModalProps } from "../interfaces/CreateContentModal";
 import { Button } from "./Button";
 import { Input } from "./Input";
-import { BACKEND_URL } from "../config";
 import axios from 'axios'
 
 enum ContentType {
@@ -23,7 +23,7 @@ export const CreateContentModal = ({
     const title = titleRef.current?.value;
     const link = linkRef.current?.value;
 
-    await axios.post(`${BACKEND_URL}/api/v1/content`, {
+    await axios.post(`${process.env.BACKEND_URL}/api/v1/content`, {
       link,
       type,
       title

@@ -1,5 +1,5 @@
+require("dotenv").config();
 import { Request, Response, NextFunction } from "express";
-import { JWT_SECRET_USER } from "../config";
 import jwt from "jsonwebtoken";
 
 declare module "express-serve-static-core" {
@@ -20,7 +20,7 @@ export const UserAuthMiddleware = (
       return; // Ensure no further execution
     }
 
-    const decodeToken = jwt.verify(token, JWT_SECRET_USER);
+    const decodeToken = jwt.verify(token, process.env.JWT_SECRET_USER as string);
 
     if (typeof decodeToken === "object" && "id" in decodeToken) {
       req.userId = decodeToken.id as string;
@@ -34,4 +34,3 @@ export const UserAuthMiddleware = (
     return;
   }
 };
-

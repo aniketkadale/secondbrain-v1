@@ -1,3 +1,4 @@
+require('dotenv').config();
 import express from "express";
 import bcrypt from "bcrypt";
 import { z } from "zod";
@@ -5,7 +6,6 @@ import jwt from "jsonwebtoken";
 import { User } from "./models/User";
 import { Content } from "./models/Content";
 import "./db";
-import { JWT_SECRET_USER } from "./config";
 import { UserAuthMiddleware } from "./middlewares/userAuthMiddleware";
 import { Link } from "./models/Link";
 import generateRandomHash from "./utils";
@@ -87,7 +87,7 @@ app.post("/api/v1/signin", async (req, res) => {
           {
             id: userFound._id,
           },
-          JWT_SECRET_USER
+          process.env.JWT_SECRET_USER as string
         );
         res.status(200).json({ message: "User signed in...", token });
       }

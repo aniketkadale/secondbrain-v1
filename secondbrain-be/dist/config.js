@@ -1,4 +1,4 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.JWT_SECRET_USER = void 0;
-exports.JWT_SECRET_USER = "USER_SECRET_123";
+exports.JWT_SECRET_USER = "";

@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserAuthMiddleware = void 0;
-const config_1 = require("../config");
+require("dotenv").config();
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const UserAuthMiddleware = (req, res, next) => {
     try {
@@ -13,7 +13,7 @@ const UserAuthMiddleware = (req, res, next) => {
             res.status(401).json({ message: "Unauthorized" });
             return; // Ensure no further execution
         }
-        const decodeToken = jsonwebtoken_1.default.verify(token, config_1.JWT_SECRET_USER);
+        const decodeToken = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET_USER);
         if (typeof decodeToken === "object" && "id" in decodeToken) {
             req.userId = decodeToken.id;
             next(); // Pass control to the next middleware

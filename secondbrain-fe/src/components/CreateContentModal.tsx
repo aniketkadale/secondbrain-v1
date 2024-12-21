@@ -1,4 +1,3 @@
-require('dotenv').config();
 import { useRef, useState } from "react";
 import { CrossIcon } from "../icons/CloseIcon";
 import { CreateContentModalProps } from "../interfaces/CreateContentModal";

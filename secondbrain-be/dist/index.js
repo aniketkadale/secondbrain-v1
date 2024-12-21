@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require('dotenv').config();
 const express_1 = __importDefault(require("express"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const zod_1 = require("zod");
@@ -19,7 +20,6 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const User_1 = require("./models/User");
 const Content_1 = require("./models/Content");
 require("./db");
-const config_1 = require("./config");
 const userAuthMiddleware_1 = require("./middlewares/userAuthMiddleware");
 const Link_1 = require("./models/Link");
 const utils_1 = __importDefault(require("./utils"));
@@ -85,7 +85,7 @@ app.post("/api/v1/signin", (req, res) => __awaiter(void 0, void 0, void 0, funct
             if (isUserMatched) {
                 const token = jsonwebtoken_1.default.sign({
                     id: userFound._id,
-                }, config_1.JWT_SECRET_USER);
+                }, process.env.JWT_SECRET_USER);
                 res.status(200).json({ message: "User signed in...", token });
             }
         }

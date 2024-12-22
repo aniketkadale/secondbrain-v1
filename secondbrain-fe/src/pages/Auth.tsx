@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
 import { BACKEND_URL } from "../config";
@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export const Signup = () => {
+  const [loading, setLoading] = useState(true);
   const usernameRef = useRef<HTMLInputElement>();
   const passwordRef = useRef<HTMLInputElement>();
   const navigate = useNavigate();
@@ -19,6 +20,8 @@ export const Signup = () => {
         username,
         password,
       });
+
+      setLoading(false);
 
       navigate("/signin");
     } catch (error) {
@@ -54,7 +57,7 @@ export const Signup = () => {
             <Button
               variant="primary"
               size="md"
-              text="Signup"
+              text={`${loading ? "Loading..." : "Signup"}`}
               fullWidth={true}
               onClick={handleSignup}
             />
@@ -80,6 +83,8 @@ export const Signup = () => {
 };
 
 export const Signin = () => {
+  const [loading, setLoading] = useState(true);
+
   const usernameRef = useRef<HTMLInputElement>();
   const passwordRef = useRef<HTMLInputElement>();
   const navigate = useNavigate();
@@ -93,6 +98,8 @@ export const Signin = () => {
         username,
         password,
       });
+
+      setLoading(false);
 
       const jwt = response.data.token;
       localStorage.setItem("token", jwt);
@@ -120,7 +127,7 @@ export const Signin = () => {
             <Button
               variant="primary"
               size="md"
-              text="Signin"
+              text={`${loading ? "Loading..." : "Signin"}`}
               fullWidth={true}
               onClick={handleSignin}
             />

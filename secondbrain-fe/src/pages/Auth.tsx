@@ -4,6 +4,7 @@ import { Input } from "../components/Input";
 import { BACKEND_URL } from "../config";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Loading from "../components/Loading";
 
 export const Signup = () => {
   const [loading, setLoading] = useState(false);
@@ -15,13 +16,12 @@ export const Signup = () => {
     try {
       const username = usernameRef.current?.value;
       const password = passwordRef.current?.value;
+      setLoading(true);
 
       await axios.post(BACKEND_URL + "/api/v1/signup", {
         username,
         password,
       });
-      setLoading(true);
-
 
       navigate("/signin");
     } catch (error) {
@@ -100,7 +100,6 @@ export const Signin = () => {
         password,
       });
 
-
       const jwt = response.data.token;
       localStorage.setItem("token", jwt);
 
@@ -127,7 +126,7 @@ export const Signin = () => {
             <Button
               variant="primary"
               size="md"
-              text={`${loading ? "Loading..." : "Signin"}`}
+              text={`${loading ? <Loading/> : "Signin"}`}
               fullWidth={true}
               onClick={handleSignin}
             />

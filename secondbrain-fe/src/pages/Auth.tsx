@@ -4,6 +4,7 @@ import { Input } from "../components/Input";
 import { BACKEND_URL } from "../config";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Loading from "../components/Loading";
 
 export const Signup = () => {
   const [loading, setLoading] = useState(false);
@@ -125,7 +126,7 @@ export const Signin = () => {
             <Button
               variant="primary"
               size="md"
-              text={`${loading ? "Loading..." : "Signin"}`}
+              text={loading ? <Loading/> : "Signin"}
               fullWidth={true}
               onClick={handleSignin}
             />

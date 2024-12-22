@@ -57,7 +57,7 @@ export const Signup = () => {
             <Button
               variant="primary"
               size="md"
-              text={`${loading ? "Loading..." : "Signup"}`}
+              text={loading ? <Loading /> : "Signup"}
               fullWidth={true}
               onClick={handleSignup}
             />
@@ -126,7 +126,7 @@ export const Signin = () => {
             <Button
               variant="primary"
               size="md"
-              text={loading ? <Loading/> : "Signin"}
+              text={loading ? <Loading /> : "Signin"}
               fullWidth={true}
               onClick={handleSignin}
             />

@@ -94,12 +94,12 @@ export const Signin = () => {
       const username = usernameRef.current?.value;
       const password = passwordRef.current?.value;
 
+      setLoading(true);
       const response = await axios.post(BACKEND_URL + "/api/v1/signin", {
         username,
         password,
       });
 
-      setLoading(true);
 
       const jwt = response.data.token;
       localStorage.setItem("token", jwt);

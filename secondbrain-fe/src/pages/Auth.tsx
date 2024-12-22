@@ -6,7 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export const Signup = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const usernameRef = useRef<HTMLInputElement>();
   const passwordRef = useRef<HTMLInputElement>();
   const navigate = useNavigate();
@@ -20,8 +20,8 @@ export const Signup = () => {
         username,
         password,
       });
+      setLoading(true);
 
-      setLoading(false);
 
       navigate("/signin");
     } catch (error) {
@@ -83,7 +83,7 @@ export const Signup = () => {
 };
 
 export const Signin = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const usernameRef = useRef<HTMLInputElement>();
   const passwordRef = useRef<HTMLInputElement>();
@@ -99,7 +99,7 @@ export const Signin = () => {
         password,
       });
 
-      setLoading(false);
+      setLoading(true);
 
       const jwt = response.data.token;
       localStorage.setItem("token", jwt);

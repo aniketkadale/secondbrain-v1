@@ -18,7 +18,7 @@ app.use(
   cors({
     origin: [
       "https://secondbrain-v1.vercel.app",
-      // "https://your-vercel-domain.vercel.app",
+      "https://secondbrain-v1-vercel.app", // Add your actual frontend URL
       "http://localhost:5173", // for local development
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
